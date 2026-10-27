@@ -1,0 +1,33 @@
+# Environment & Sensitive Credentials
+.env
+*.env
+*.secret
+credentials.json
+
+# Exclude report folder as explicitly instructed
+report/
+report/**
+
+# Images generated specifically for report
+cu.png
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
