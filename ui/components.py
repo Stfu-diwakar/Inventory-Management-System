@@ -8,44 +8,42 @@ from typing import Dict, Any, Optional
 
 def render_header(title: str, subtitle: str, db_status: Optional[Dict[str, Any]] = None):
     """Renders the top navigation and status header."""
-    status_html = ""
     if db_status and db_status.get("success"):
-        status_html = f"""
-        <div style="display: flex; align-items: center; gap: 8px;">
-            <div style="width: 10px; height: 10px; border-radius: 50%; background-color: #10B981; box-shadow: 0 0 10px #10B981;"></div>
-            <span style="font-size: 13px; font-weight: 600; color: #E2E8F0;">Oracle 23ai Connected ({db_status.get('user', '')}@{db_status.get('dsn', '')})</span>
-        </div>
-        """
+        badge_dot = "#10B981"
+        badge_text_color = "#E2E8F0"
+        status_text = f"Oracle 23ai Connected ({db_status.get('user', '')}@{db_status.get('dsn', '')})"
     else:
-        status_html = """
-        <div style="display: flex; align-items: center; gap: 8px;">
-            <div style="width: 10px; height: 10px; border-radius: 50%; background-color: #EF4444; box-shadow: 0 0 10px #EF4444;"></div>
-            <span style="font-size: 13px; font-weight: 600; color: #FCA5A5;">Disconnected</span>
-        </div>
-        """
+        badge_dot = "#EF4444"
+        badge_text_color = "#FCA5A5"
+        status_text = "Disconnected"
 
-    st.markdown(f"""
-    <div class="app-header">
-        <div>
-            <h1 class="app-title">{title}</h1>
-            <div class="app-subtitle">{subtitle}</div>
-        </div>
-        <div>
-            {status_html}
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    header_html = (
+        '<div class="app-header">'
+        '<div class="app-header-left">'
+        f'<h1 class="app-title">{title}</h1>'
+        f'<div class="app-subtitle">{subtitle}</div>'
+        '</div>'
+        '<div class="app-header-right">'
+        '<div class="db-status-pill">'
+        f'<span class="db-status-dot" style="background-color: {badge_dot}; box-shadow: 0 0 10px {badge_dot};"></span>'
+        f'<span class="db-status-text" style="color: {badge_text_color};">{status_text}</span>'
+        '</div>'
+        '</div>'
+        '</div>'
+    )
+    st.markdown(header_html, unsafe_allow_html=True)
 
 def render_kpi_card(col, label: str, value: str, subtext: str = "", delta: Optional[str] = None):
     """Renders a styled KPI metric card in a Streamlit column."""
     with col:
-        st.markdown(f"""
-        <div class="kpi-card">
-            <div class="kpi-label">{label}</div>
-            <div class="kpi-value">{value}</div>
-            <div class="kpi-sub">{subtext}</div>
-        </div>
-        """, unsafe_allow_html=True)
+        card_html = (
+            '<div class="kpi-card">'
+            f'<div class="kpi-label">{label}</div>'
+            f'<div class="kpi-value">{value}</div>'
+            f'<div class="kpi-sub">{subtext}</div>'
+            '</div>'
+        )
+        st.markdown(card_html, unsafe_allow_html=True)
 
 def render_status_badge(status: str) -> str:
     """Returns HTML for a status pill badge."""

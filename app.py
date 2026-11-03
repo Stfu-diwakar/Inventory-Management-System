@@ -66,17 +66,19 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("### 🔌 Oracle SQL Status")
     if db_status.get("success"):
-        st.markdown(f"""
-        - **Status**: 🟢 <span style='color:#10B981;font-weight:600;'>Online</span>
-        - **Engine**: Oracle 23ai Free
-        - **User**: `{db_status.get('user')}`
-        - **Tables**: `{db_status.get('table_count')}`
-        """, unsafe_allow_html=True)
+        st.markdown(
+            f"- **Status**: 🟢 <span style='color:#10B981;font-weight:600;'>Online</span>\n"
+            f"- **Engine**: Oracle 23ai Free\n"
+            f"- **User**: `{db_status.get('user')}`\n"
+            f"- **Tables**: `{db_status.get('table_count')}`",
+            unsafe_allow_html=True
+        )
     else:
-        st.markdown("""
-        - **Status**: 🔴 <span style='color:#EF4444;font-weight:600;'>Disconnected</span>
-        - Please verify Oracle Service is active.
-        """, unsafe_allow_html=True)
+        st.markdown(
+            "- **Status**: 🔴 <span style='color:#EF4444;font-weight:600;'>Disconnected</span>\n"
+            "- Please verify Oracle Service is active.",
+            unsafe_allow_html=True
+        )
 
     st.markdown("---")
     st.caption("DBMS Academic Project\nSemester 3 Data Analytics\nInterface: Python + Streamlit")

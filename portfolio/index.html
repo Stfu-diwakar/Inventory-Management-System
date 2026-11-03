@@ -1,0 +1,1814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ApexStock Enterprise — Oracle SQL & Streamlit DBMS Project</title>
+  <meta name="description" content="Industrial-Grade Enterprise Inventory Management System built with Oracle SQL 23ai, Python, and Streamlit. Demonstrates 3NF Relational Schemas, Complex Joins, PL/SQL Triggers, DCL Security, and Analytics.">
+  <meta name="keywords" content="Oracle SQL, DBMS Project, Inventory Management System, Streamlit, Python, Chandigarh University, MCA, PL/SQL, Database Management">
+  <meta name="author" content="Diwakar Jha">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ApexStock Enterprise — Oracle SQL & Streamlit Project">
+  <meta property="og:description" content="3-Tier Enterprise Inventory Management System with Oracle 23ai Free, PL/SQL Stored Procedures, and Streamlit Analytics.">
+  <meta property="og:image" content="assets/cu.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============================================================================
+       TOP ANNOUNCEMENT / STATUS BAR
+       ============================================================================ -->
+  <div class="announcement-bar">
+    <div class="container announcement-content">
+      <span class="badge-pill pulse"><i class="fa-solid fa-server"></i> Live Production Schema</span>
+      <span class="announcement-text">
+        <strong>Chandigarh University — MCA (AI &amp; ML)</strong> | Database Management Systems Mini-Project (Oracle 23ai + Streamlit)
+      </span>
+      <div class="announcement-links">
+        <a href="#quickstart" class="announcement-link"><i class="fa-solid fa-bolt"></i> Quickstart</a>
+        <a href="#viva-guide" class="announcement-link"><i class="fa-solid fa-graduation-cap"></i> Viva Guide</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================================
+       NAVIGATION BAR
+       ============================================================================ -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo">
+        <div class="brand-icon">📦</div>
+        <div class="brand-text">
+          <span class="brand-title">ApexStock</span>
+          <span class="brand-tag">Enterprise IMS</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#overview" class="nav-item">Overview</a>
+        <a href="#architecture" class="nav-item">Architecture</a>
+        <a href="#schema" class="nav-item">Relational ERD</a>
+        <a href="#dbms-concepts" class="nav-item">DBMS Concepts</a>
+        <a href="#sql-workbench" class="nav-item">SQL Console</a>
+        <a href="#ui-tour" class="nav-item">UI Modules</a>
+        <a href="#viva-guide" class="nav-item">Viva Defense</a>
+        <a href="#author" class="nav-item">Author</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#sql-workbench" class="btn btn-primary btn-sm">
+          <i class="fa-solid fa-terminal"></i> Run SQL
+        </a>
+        <a href="#quickstart" class="btn btn-outline btn-sm">
+          <i class="fa-solid fa-cloud-arrow-up"></i> Deploy
+        </a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================================
+       HERO SECTION
+       ============================================================================ -->
+  <section class="hero" id="overview">
+    <div class="hero-bg-glow"></div>
+    <div class="hero-grid-pattern"></div>
+
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>Oracle 23ai Free &bull; Thin Driver &bull; Streamlit Enterprise UI</span>
+        </div>
+
+        <h1 class="hero-title">
+          Enterprise <span class="gradient-text">Inventory Management</span> &amp; Supply Chain Engine
+        </h1>
+
+        <p class="hero-description">
+          A high-performance <strong>3-tier DBMS application</strong> designed for multi-facility warehouse stock tracking,
+          automated reordering thresholds, POS billing transactions, and role-based data governance.
+          Demonstrating <strong>3NF Relational Modeling</strong>, <strong>PL/SQL ACID Transactions</strong>,
+          autonomous <strong>Audit Triggers</strong>, and analytical <strong>Window Functions</strong>.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#sql-workbench" class="btn btn-primary btn-lg">
+            <i class="fa-solid fa-play"></i> Launch Interactive SQL Console
+          </a>
+          <a href="#schema" class="btn btn-secondary btn-lg">
+            <i class="fa-solid fa-diagram-project"></i> Inspect ER Diagram
+          </a>
+          <a href="#deploy-render" class="btn btn-outline btn-lg">
+            <i class="fa-solid fa-cloud"></i> Deploy to Render
+          </a>
+        </div>
+
+        <!-- Metrics Ribbon -->
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-number" data-count="10">10</div>
+            <div class="metric-label">Relational Tables</div>
+            <div class="metric-sub">Full 3NF &bull; PK/FK Constraints</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-number" data-count="5">5</div>
+            <div class="metric-label">Analytical Views</div>
+            <div class="metric-sub">Live Margins &amp; Deficits</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-number" data-count="4">4</div>
+            <div class="metric-label">RBAC Security Roles</div>
+            <div class="metric-sub">DCL Granular Permissions</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-number">100%</div>
+            <div class="metric-label">ACID Compliant</div>
+            <div class="metric-sub">Atomic PL/SQL Transfers</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-number" data-count="9">9</div>
+            <div class="metric-label">Streamlit Modules</div>
+            <div class="metric-sub">Plotly Real-Time Analytics</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual: Simulated Interactive Terminal -->
+      <div class="hero-visual">
+        <div class="terminal-card">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <div class="terminal-title">
+              <i class="fa-solid fa-database"></i> inv_admin@localhost:1521/FREEPDB1
+            </div>
+            <div class="terminal-status"><span class="badge-status-green">CONNECTED</span></div>
+          </div>
+          <div class="terminal-body">
+            <div class="terminal-code">
+              <span class="code-comment">-- Querying live stock valuation &amp; gross margin view</span><br>
+              <span class="code-kw">SELECT</span> category_name, total_products, total_stock,<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gross_margin_pct, stock_health_status<br>
+              <span class="code-kw">FROM</span> VW_PRODUCT_STOCK_SUMMARY<br>
+              <span class="code-kw">WHERE</span> rownum &lt;= 3;<br>
+            </div>
+            <div class="terminal-output">
+              <div class="output-header-row">
+                <span>CATEGORY_NAME</span>
+                <span>PRODUCTS</span>
+                <span>STOCK</span>
+                <span>MARGIN</span>
+                <span>HEALTH</span>
+              </div>
+              <div class="output-data-row">
+                <span class="text-white">Industrial Automation</span>
+                <span class="text-cyan">18</span>
+                <span class="text-yellow">1,420</span>
+                <span class="text-green">+34.8%</span>
+                <span class="badge-table-green">OPTIMAL</span>
+              </div>
+              <div class="output-data-row">
+                <span class="text-white">Precision Sensorics</span>
+                <span class="text-cyan">12</span>
+                <span class="text-yellow">860</span>
+                <span class="text-green">+41.2%</span>
+                <span class="badge-table-green">OPTIMAL</span>
+              </div>
+              <div class="output-data-row">
+                <span class="text-white">Power Distribution</span>
+                <span class="text-cyan">14</span>
+                <span class="text-yellow">115</span>
+                <span class="text-red">+22.4%</span>
+                <span class="badge-table-yellow">LOW_ALERT</span>
+              </div>
+            </div>
+            <div class="terminal-footer">
+              <span><i class="fa-solid fa-clock"></i> Execution: 11.4ms</span>
+              <span><i class="fa-solid fa-table-cells"></i> 3 rows returned</span>
+              <span class="text-green"><i class="fa-solid fa-circle-check"></i> Consistent Read</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating Badge: Oracle 23ai -->
+        <div class="floating-badge badge-oracle">
+          <i class="fa-solid fa-shield-halved"></i>
+          <div>
+            <strong>Oracle 23ai Free</strong>
+            <span>Enterprise Engine</span>
+          </div>
+        </div>
+
+        <!-- Floating Badge: Streamlit UI -->
+        <div class="floating-badge badge-streamlit">
+          <i class="fa-solid fa-chart-line"></i>
+          <div>
+            <strong>Streamlit 1.39+</strong>
+            <span>Plotly Data Visuals</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       ACADEMIC & PROJECT METADATA BANNER
+       ============================================================================ -->
+  <section class="academic-banner" id="academic">
+    <div class="container academic-container">
+      <div class="academic-crest">
+        <img src="assets/cu.png" alt="Chandigarh University Crest" class="cu-logo" onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'120\' height=\'120\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'45\' fill=\'%23c21807\'/><text x=\'50\' y=\'58\' font-size=\'32\' font-weight=\'bold\' fill=\'white\' text-anchor=\'middle\'>CU</text></svg>'">
+      </div>
+      <div class="academic-details">
+        <div class="academic-eyebrow">Academic Submission &bull; MCA Semester 3</div>
+        <h2 class="academic-title">Chandigarh University — University Institute of Computing</h2>
+        <p class="academic-meta">
+          <strong>Master of Computer Applications</strong> in <em>Artificial Intelligence &amp; Machine Learning</em> &bull; 
+          Course: <strong>Database Management Systems (DA Mini-Project)</strong> &bull; October 2026
+        </p>
+      </div>
+      <div class="academic-team-pills">
+        <div class="team-pill">
+          <i class="fa-solid fa-user-graduate"></i>
+          <div>
+            <span class="pill-name">Diwakar Jha</span>
+            <span class="pill-uid">UID: 25MCI10342</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       SYSTEM ARCHITECTURE (3-TIER DEEP DIVE)
+       ============================================================================ -->
+  <section class="section section-dark" id="architecture">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag"><i class="fa-solid fa-layer-group"></i> Enterprise Architecture</div>
+        <h2 class="section-title">Industrial 3-Tier Enterprise Design</h2>
+        <p class="section-subtitle">
+          Engineered for strict separation of concerns, high-concurrency connection handling,
+          zero SQL injection vulnerabilities, and deterministic transaction isolation.
+        </p>
+      </div>
+
+      <!-- Architecture 3-Tier Cards -->
+      <div class="arch-tiers-grid">
+        <!-- Tier 1 -->
+        <div class="arch-card">
+          <div class="arch-tier-num">TIER 1</div>
+          <div class="arch-header">
+            <div class="arch-icon"><i class="fa-solid fa-desktop"></i></div>
+            <div>
+              <h3 class="arch-name">Presentation Layer</h3>
+              <span class="arch-tech">Python Streamlit &bull; Plotly &bull; Custom CSS</span>
+            </div>
+          </div>
+          <p class="arch-desc">
+            Responsive, web-based corporate dashboard with high-DPI Plotly visual graphs, real-time KPI metric ribbons,
+            Point-of-Sale (POS) shopping cart, and parameterized search filters.
+          </p>
+          <ul class="arch-features">
+            <li><i class="fa-solid fa-check"></i> Dark-Navy Corporate Design System (8px Grid)</li>
+            <li><i class="fa-solid fa-check"></i> Plotly Donut &amp; Warehouse Capacity Meters</li>
+            <li><i class="fa-solid fa-check"></i> Real-time Client-side Form Validation</li>
+            <li><i class="fa-solid fa-check"></i> Printable Sales Order Receipt &amp; Invoicing</li>
+          </ul>
+        </div>
+
+        <!-- Tier 2 -->
+        <div class="arch-card active-card">
+          <div class="arch-tier-num">TIER 2</div>
+          <div class="arch-header">
+            <div class="arch-icon"><i class="fa-solid fa-gears"></i></div>
+            <div>
+              <h3 class="arch-name">Application &amp; Data Access Layer</h3>
+              <span class="arch-tech">Python 3.10+ &bull; python-oracledb Thin Mode</span>
+            </div>
+          </div>
+          <p class="arch-desc">
+            Business logic orchestration and repository pattern managing database interactions,
+            parameterized query execution, connection lifecycle pooling, and transactional commit/rollback.
+          </p>
+          <ul class="arch-features">
+            <li><i class="fa-solid fa-check"></i> Oracle Thin Driver (No Instant Client required)</li>
+            <li><i class="fa-solid fa-check"></i> Parameterized Bind Variables (:param) prevent SQL Injection</li>
+            <li><i class="fa-solid fa-check"></i> Exception Handling &amp; Context-Managed Connections</li>
+            <li><i class="fa-solid fa-check"></i> Modular Services: DML Manager, Query Engine, DCL Manager</li>
+          </ul>
+        </div>
+
+        <!-- Tier 3 -->
+        <div class="arch-card">
+          <div class="arch-tier-num">TIER 3</div>
+          <div class="arch-header">
+            <div class="arch-icon"><i class="fa-solid fa-database"></i></div>
+            <div>
+              <h3 class="arch-name">Database Engine (RDBMS)</h3>
+              <span class="arch-tech">Oracle Database 23ai Free / 21c Express</span>
+            </div>
+          </div>
+          <p class="arch-desc">
+            Industrial relational storage engine executing relational integrity enforcement,
+            PL/SQL procedural business transactions, row-level locks, autonomous triggers, and analytical views.
+          </p>
+          <ul class="arch-features">
+            <li><i class="fa-solid fa-check"></i> 10 Normalized 3NF Relational Tables</li>
+            <li><i class="fa-solid fa-check"></i> PL/SQL Procedures with SELECT FOR UPDATE Row Locks</li>
+            <li><i class="fa-solid fa-check"></i> AFTER UPDATE/DELETE Autonomous Triggers</li>
+            <li><i class="fa-solid fa-check"></i> Role-Based Access Control (DCL) &amp; Data Dictionary</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Transaction Workflow Diagram (Interactive) -->
+      <div class="workflow-box">
+        <h4 class="workflow-title"><i class="fa-solid fa-arrows-spin"></i> ACID Transaction Lifecycle: Inter-Warehouse Stock Transfer</h4>
+        <div class="workflow-steps">
+          <div class="workflow-step">
+            <div class="step-badge">1</div>
+            <div class="step-content">
+              <strong>User Dispatches Transfer</strong>
+              <span>Streamlit UI passes source, target, SKU &amp; quantity.</span>
+            </div>
+          </div>
+          <div class="workflow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          <div class="workflow-step">
+            <div class="step-badge">2</div>
+            <div class="step-content">
+              <strong>PL/SQL Row Lock</strong>
+              <span>`SELECT ... FOR UPDATE` locks source row to prevent concurrent race condition.</span>
+            </div>
+          </div>
+          <div class="workflow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          <div class="workflow-step">
+            <div class="step-badge">3</div>
+            <div class="step-content">
+              <strong>Debit &amp; MERGE Credit</strong>
+              <span>Debits source facility; executes MERGE Upsert at target facility.</span>
+            </div>
+          </div>
+          <div class="workflow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          <div class="workflow-step">
+            <div class="step-badge">4</div>
+            <div class="step-content">
+              <strong>Atomic COMMIT</strong>
+              <span>Logs `TRANSFER_OUT` &amp; `TRANSFER_IN` in stock ledger. Rollback on failure.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       RELATIONAL SCHEMA & INTERACTIVE ER DIAGRAM
+       ============================================================================ -->
+  <section class="section" id="schema">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag"><i class="fa-solid fa-diagram-project"></i> Relational Database Design</div>
+        <h2 class="section-title">Entity-Relationship Model &amp; 3NF Schema</h2>
+        <p class="section-subtitle">
+          Designed with 10 tables in Third Normal Form (3NF), eliminating update, insertion, and deletion anomalies
+          with rigorous primary keys, foreign keys with cascade/set null rules, and check constraints.
+        </p>
+      </div>
+
+      <!-- ER Diagram Visual Canvas -->
+      <div class="erd-visual-container">
+        <div class="erd-visual-header">
+          <div class="erd-title">
+            <i class="fa-solid fa-network-wired"></i> Relational Schema Map &bull; Cardinalities &amp; Foreign Keys
+          </div>
+          <div class="erd-legend">
+            <span class="legend-item"><span class="legend-color pk"></span> Primary Key (PK)</span>
+            <span class="legend-item"><span class="legend-color fk"></span> Foreign Key (FK)</span>
+            <span class="legend-item"><span class="legend-color chk"></span> Check / Unique</span>
+          </div>
+        </div>
+
+        <div class="erd-cards-grid">
+          <!-- Categories -->
+          <div class="erd-table-card" onclick="openTableModal('CATEGORIES')">
+            <div class="erd-card-head">
+              <span class="erd-entity-name">CATEGORIES</span>
+              <span class="badge-card">1 : M Products</span>
+            </div>
+            <div class="erd-card-body">
+              <div class="erd-col pk-col"><i class="fa-solid fa-key"></i> category_id <span class="erd-type">NUMBER (PK)</span></div>
+              <div class="erd-col uq-col"><i class="fa-solid fa-fingerprint"></i> category_name <span class="erd-type">VARCHAR2(50) UK</span></div>
+              <div class="erd-col">description <span class="erd-type">VARCHAR2(255)</span></div>
+              <div class="erd-col">created_at <span class="erd-type">TIMESTAMP</span></div>
+            </div>
+          </div>
+
+          <!-- Suppliers -->
+          <div class="erd-table-card" onclick="openTableModal('SUPPLIERS')">
+            <div class="erd-card-head">
+              <span class="erd-entity-name">SUPPLIERS</span>
+              <span class="badge-card">1 : M Products</span>
+            </div>
+            <div class="erd-card-body">
+              <div class="erd-col pk-col"><i class="fa-solid fa-key"></i> supplier_id <span class="erd-type">NUMBER (PK)</span></div>
+              <div class="erd-col">supplier_name <span class="erd-type">VARCHAR2(100)</span></div>
+              <div class="erd-col uq-col"><i class="fa-solid fa-envelope"></i> email <span class="erd-type">VARCHAR2(100) UK</span></div>
+              <div class="erd-col chk-col"><i class="fa-solid fa-star"></i> rating <span class="erd-type">CHECK 1..5</span></div>
+              <div class="erd-col">status <span class="erd-type">'ACTIVE'/'INACTIVE'</span></div>
+            </div>
+          </div>
+
+          <!-- Products (Central Hub) -->
+          <div class="erd-table-card hub-card" onclick="openTableModal('PRODUCTS')">
+            <div class="erd-card-head highlight-head">
+              <span class="erd-entity-name">PRODUCTS</span>
+              <span class="badge-card badge-gold">Central Hub</span>
+            </div>
+            <div class="erd-card-body">
+              <div class="erd-col pk-col"><i class="fa-solid fa-key"></i> product_id <span class="erd-type">NUMBER (PK)</span></div>
+              <div class="erd-col uq-col"><i class="fa-solid fa-barcode"></i> sku <span class="erd-type">VARCHAR2(50) UK</span></div>
+              <div class="erd-col">product_name <span class="erd-type">VARCHAR2(150)</span></div>
+              <div class="erd-col fk-col"><i class="fa-solid fa-link"></i> category_id <span class="erd-type">FK &rarr; CATEGORIES</span></div>
+              <div class="erd-col fk-col"><i class="fa-solid fa-link"></i> supplier_id <span class="erd-type">FK &rarr; SUPPLIERS</span></div>
+              <div class="erd-col chk-col"><i class="fa-solid fa-shield"></i> unit_price <span class="erd-type">CHECK &ge; cost_price</span></div>
+              <div class="erd-col">reorder_level <span class="erd-type">NUMBER</span></div>
+            </div>
+          </div>
+
+          <!-- Warehouses -->
+          <div class="erd-table-card" onclick="openTableModal('WAREHOUSES')">
+            <div class="erd-card-head">
+              <span class="erd-entity-name">WAREHOUSES</span>
+              <span class="badge-card">1 : M Inventory</span>
+            </div>
+            <div class="erd-card-body">
+              <div class="erd-col pk-col"><i class="fa-solid fa-key"></i> warehouse_id <span class="erd-type">NUMBER (PK)</span></div>
+              <div class="erd-col uq-col">warehouse_name <span class="erd-type">VARCHAR2(100) UK</span></div>
+              <div class="erd-col">location <span class="erd-type">VARCHAR2(150)</span></div>
+              <div class="erd-col chk-col"><i class="fa-solid fa-shield"></i> capacity <span class="erd-type">CHECK &gt; 0</span></div>
+              <div class="erd-col">manager_name <span class="erd-type">VARCHAR2(100)</span></div>
+            </div>
+          </div>
+
+          <!-- Inventory (M:N Bridge) -->
+          <div class="erd-table-card bridge-card" onclick="openTableModal('INVENTORY')">
+            <div class="erd-card-head">
+              <span class="erd-entity-name">INVENTORY</span>
+              <span class="badge-card">M : N Bridge</span>
+            </div>
+            <div class="erd-card-body">
+              <div class="erd-col pk-col"><i class="fa-solid fa-key"></i> inventory_id <span class="erd-type">NUMBER (PK)</span></div>
+              <div class="erd-col fk-col"><i class="fa-solid fa-link"></i> product_id <span class="erd-type">FK &rarr; PRODUCTS</span></div>
+              <div class="erd-col fk-col"><i class="fa-solid fa-link"></i> warehouse_id <span class="erd-type">FK &rarr; WAREHOUSES</span></div>
+              <div class="erd-col uq-col"><i class="fa-solid fa-fingerprint"></i> (prod_id, wh_id) <span class="erd-type">COMPOSITE UK</span></div>
+              <div class="erd-col chk-col"><i class="fa-solid fa-shield"></i> quantity_on_hand <span class="erd-type">CHECK &ge; 0</span></div>
+            </div>
+          </div>
+
+          <!-- Customers -->
+          <div class="erd-table-card" onclick="openTableModal('CUSTOMERS')">
+            <div class="erd-card-head">
+              <span class="erd-entity-name">CUSTOMERS</span>
+              <span class="badge-card">1 : M Orders</span>
+            </div>
+            <div class="erd-card-body">
+              <div class="erd-col pk-col"><i class="fa-solid fa-key"></i> customer_id <span class="erd-type">NUMBER (PK)</span></div>
+              <div class="erd-col">customer_name <span class="erd-type">VARCHAR2(100)</span></div>
+              <div class="erd-col uq-col"><i class="fa-solid fa-envelope"></i> email <span class="erd-type">VARCHAR2(100) UK</span></div>
+              <div class="erd-col chk-col">customer_type <span class="erd-type">RETAIL/WHOLESALE/CORP</span></div>
+            </div>
+          </div>
+
+          <!-- Orders -->
+          <div class="erd-table-card" onclick="openTableModal('ORDERS')">
+            <div class="erd-card-head">
+              <span class="erd-entity-name">ORDERS</span>
+              <span class="badge-card">1 : M Order Items</span>
+            </div>
+            <div class="erd-card-body">
+              <div class="erd-col pk-col"><i class="fa-solid fa-key"></i> order_id <span class="erd-type">NUMBER (PK)</span></div>
+              <div class="erd-col uq-col"><i class="fa-solid fa-receipt"></i> order_number <span class="erd-type">VARCHAR2(50) UK</span></div>
+              <div class="erd-col fk-col"><i class="fa-solid fa-link"></i> customer_id <span class="erd-type">FK &rarr; CUSTOMERS</span></div>
+              <div class="erd-col">total_amount <span class="erd-type">NUMBER(12,2)</span></div>
+              <div class="erd-col chk-col">status <span class="erd-type">PENDING/COMPLETED..</span></div>
+            </div>
+          </div>
+
+          <!-- Order Items -->
+          <div class="erd-table-card" onclick="openTableModal('ORDER_ITEMS')">
+            <div class="erd-card-head">
+              <span class="erd-entity-name">ORDER_ITEMS</span>
+              <span class="badge-card">Line Item Details</span>
+            </div>
+            <div class="erd-card-body">
+              <div class="erd-col pk-col"><i class="fa-solid fa-key"></i> order_item_id <span class="erd-type">NUMBER (PK)</span></div>
+              <div class="erd-col fk-col"><i class="fa-solid fa-link"></i> order_id <span class="erd-type">FK &rarr; ORDERS</span></div>
+              <div class="erd-col fk-col"><i class="fa-solid fa-link"></i> product_id <span class="erd-type">FK &rarr; PRODUCTS</span></div>
+              <div class="erd-col fk-col"><i class="fa-solid fa-link"></i> warehouse_id <span class="erd-type">FK &rarr; WAREHOUSES</span></div>
+              <div class="erd-col chk-col">quantity <span class="erd-type">CHECK &gt; 0</span></div>
+              <div class="erd-col">subtotal <span class="erd-type">NUMBER(12,2)</span></div>
+            </div>
+          </div>
+
+          <!-- Stock Transactions -->
+          <div class="erd-table-card" onclick="openTableModal('STOCK_TRANSACTIONS')">
+            <div class="erd-card-head">
+              <span class="erd-entity-name">STOCK_TRANSACTIONS</span>
+              <span class="badge-card">Movement Ledger</span>
+            </div>
+            <div class="erd-card-body">
+              <div class="erd-col pk-col"><i class="fa-solid fa-key"></i> transaction_id <span class="erd-type">NUMBER (PK)</span></div>
+              <div class="erd-col fk-col"><i class="fa-solid fa-link"></i> product_id <span class="erd-type">FK &rarr; PRODUCTS</span></div>
+              <div class="erd-col fk-col"><i class="fa-solid fa-link"></i> warehouse_id <span class="erd-type">FK &rarr; WAREHOUSES</span></div>
+              <div class="erd-col chk-col">transaction_type <span class="erd-type">IN/OUT/TRANSFER</span></div>
+              <div class="erd-col">performed_by <span class="erd-type">VARCHAR2(50)</span></div>
+            </div>
+          </div>
+
+          <!-- Audit Logs -->
+          <div class="erd-table-card" onclick="openTableModal('AUDIT_LOGS')">
+            <div class="erd-card-head">
+              <span class="erd-entity-name">AUDIT_LOGS</span>
+              <span class="badge-card">Autonomous Trigger</span>
+            </div>
+            <div class="erd-card-body">
+              <div class="erd-col pk-col"><i class="fa-solid fa-key"></i> log_id <span class="erd-type">NUMBER (PK)</span></div>
+              <div class="erd-col">table_name <span class="erd-type">VARCHAR2(50)</span></div>
+              <div class="erd-col chk-col">action_type <span class="erd-type">INSERT/UPDATE/DELETE</span></div>
+              <div class="erd-col">record_id <span class="erd-type">VARCHAR2(50)</span></div>
+              <div class="erd-col">details <span class="erd-type">VARCHAR2(4000)</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Relational Integrity Rules Summary Table -->
+      <div class="schema-summary-box">
+        <h3 class="schema-summary-title"><i class="fa-solid fa-scale-balanced"></i> Enterprise Integrity Constraints &amp; Validation Matrix</h3>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Table</th>
+                <th>Primary Key</th>
+                <th>Foreign Keys (Referenced Entity)</th>
+                <th>Check Constraints &amp; Business Rules</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>PRODUCTS</code></td>
+                <td><span class="badge-pk">product_id</span></td>
+                <td><code>category_id</code> &rarr; CATEGORIES, <code>supplier_id</code> &rarr; SUPPLIERS</td>
+                <td><code>chk_price_gte_cost</code>: <code>unit_price &gt;= cost_price</code> (Ensures non-negative markup)</td>
+              </tr>
+              <tr>
+                <td><code>INVENTORY</code></td>
+                <td><span class="badge-pk">inventory_id</span></td>
+                <td><code>product_id</code>, <code>warehouse_id</code></td>
+                <td><code>UNIQUE(product_id, warehouse_id)</code> &amp; <code>quantity_on_hand &gt;= 0</code></td>
+              </tr>
+              <tr>
+                <td><code>ORDERS</code></td>
+                <td><span class="badge-pk">order_id</span></td>
+                <td><code>customer_id</code> &rarr; CUSTOMERS</td>
+                <td><code>UNIQUE(order_number)</code>, <code>status IN ('PENDING','PROCESSING','COMPLETED','CANCELLED')</code></td>
+              </tr>
+              <tr>
+                <td><code>SUPPLIERS</code></td>
+                <td><span class="badge-pk">supplier_id</span></td>
+                <td><em>None</em></td>
+                <td><code>CHECK (rating BETWEEN 1 AND 5)</code>, <code>UNIQUE(email)</code></td>
+              </tr>
+              <tr>
+                <td><code>STOCK_TRANSACTIONS</code></td>
+                <td><span class="badge-pk">transaction_id</span></td>
+                <td><code>product_id</code>, <code>warehouse_id</code></td>
+                <td><code>transaction_type IN ('STOCK_IN','STOCK_OUT','TRANSFER_IN','TRANSFER_OUT','ADJUSTMENT')</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       DBMS ACADEMIC CONCEPTS COVERED (CURRICULUM MAPPING)
+       ============================================================================ -->
+  <section class="section section-dark" id="dbms-concepts">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag"><i class="fa-solid fa-book-bookmark"></i> Academic Rigor</div>
+        <h2 class="section-title">Comprehensive DBMS Curriculum Coverage</h2>
+        <p class="section-subtitle">
+          Every core database concept from relational algebra to high-concurrency transaction management
+          is implemented, verified, and demonstrated live in the application.
+        </p>
+      </div>
+
+      <!-- Concepts Grid -->
+      <div class="concepts-grid">
+        <div class="concept-card">
+          <div class="concept-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+          <h3 class="concept-title">DDL &amp; Schema Integrity</h3>
+          <p class="concept-desc">
+            <code>CREATE TABLE</code> with Identity Sequencing, Primary/Foreign Keys with <code>ON DELETE CASCADE</code> / <code>SET NULL</code>,
+            domain <code>CHECK</code> constraints, and 5 compiled Analytical Views.
+          </p>
+          <div class="concept-code-preview">
+            <code>GENERATED BY DEFAULT AS IDENTITY</code><br>
+            <code>CONSTRAINT chk_price CHECK (unit_price &gt;= cost_price)</code>
+          </div>
+        </div>
+
+        <div class="concept-card">
+          <div class="concept-icon"><i class="fa-solid fa-shuffle"></i></div>
+          <h3 class="concept-title">Atomic MERGE (Upsert)</h3>
+          <p class="concept-desc">
+            Eliminates multi-step read-modify-write race conditions in inventory adjustments by atomically updating
+            existing warehouse stock or inserting a new row in a single compiled round-trip.
+          </p>
+          <div class="concept-code-preview">
+            <code>MERGE INTO INVENTORY i USING (SELECT ...)</code><br>
+            <code>WHEN MATCHED THEN UPDATE ... WHEN NOT MATCHED ...</code>
+          </div>
+        </div>
+
+        <div class="concept-card">
+          <div class="concept-icon"><i class="fa-solid fa-code-merge"></i></div>
+          <h3 class="concept-title">Multi-Table Relational Joins</h3>
+          <p class="concept-desc">
+            4-Way <code>INNER JOIN</code> linking products, categories, stock, and warehouses.
+            <code>LEFT OUTER JOIN</code> with <code>NVL()</code> to surface empty facilities without data loss.
+          </p>
+          <div class="concept-code-preview">
+            <code>FROM PRODUCTS p INNER JOIN CATEGORIES c ...</code><br>
+            <code>LEFT OUTER JOIN INVENTORY i ON w.warehouse_id = i.warehouse_id</code>
+          </div>
+        </div>
+
+        <div class="concept-card">
+          <div class="concept-icon"><i class="fa-solid fa-calculator"></i></div>
+          <h3 class="concept-title">Aggregations &amp; HAVING</h3>
+          <p class="concept-desc">
+            Category-level stock valuation and profit margin computations using <code>SUM</code>, <code>AVG</code>,
+            and <code>COUNT(DISTINCT)</code> combined with post-aggregation <code>HAVING</code> filters.
+          </p>
+          <div class="concept-code-preview">
+            <code>GROUP BY c.category_id, c.category_name</code><br>
+            <code>HAVING SUM(i.quantity_on_hand) &gt; 100</code>
+          </div>
+        </div>
+
+        <div class="concept-card">
+          <div class="concept-icon"><i class="fa-solid fa-chart-simple"></i></div>
+          <h3 class="concept-title">Analytic &amp; Window Functions</h3>
+          <p class="concept-desc">
+            Enterprise analytics without self-joins using <code>DENSE_RANK() OVER (PARTITION BY ...)</code> for price leadership
+            and cumulative order running totals with window frame clauses.
+          </p>
+          <div class="concept-code-preview">
+            <code>DENSE_RANK() OVER (PARTITION BY category_id ORDER BY price DESC)</code><br>
+            <code>SUM(total) OVER (ORDER BY date ROWS UNBOUNDED PRECEDING)</code>
+          </div>
+        </div>
+
+        <div class="concept-card">
+          <div class="concept-icon"><i class="fa-solid fa-filter"></i></div>
+          <h3 class="concept-title">Subqueries &amp; Predicates</h3>
+          <p class="concept-desc">
+            Non-correlated subqueries (catalog average pricing), correlated subqueries (maximum priced product per category),
+            and efficient <code>EXISTS</code> predicates for suppliers with low-stock alerts.
+          </p>
+          <div class="concept-code-preview">
+            <code>WHERE unit_price &gt; (SELECT AVG(unit_price) FROM PRODUCTS)</code><br>
+            <code>WHERE EXISTS (SELECT 1 FROM INVENTORY WHERE qty &lt;= reorder)</code>
+          </div>
+        </div>
+
+        <div class="concept-card">
+          <div class="concept-icon"><i class="fa-solid fa-diagram-next"></i></div>
+          <h3 class="concept-title">Set Operators (UNION ALL / MINUS)</h3>
+          <p class="concept-desc">
+            Polymorphic stakeholder contact directory unified via <code>UNION ALL</code> across Customers and Suppliers.
+            Set difference <code>MINUS</code> isolating facilities free of stock deficits.
+          </p>
+          <div class="concept-code-preview">
+            <code>SELECT 'CUSTOMER', name, email FROM CUSTOMERS</code><br>
+            <code>UNION ALL SELECT 'SUPPLIER', name, email FROM SUPPLIERS</code>
+          </div>
+        </div>
+
+        <div class="concept-card">
+          <div class="concept-icon"><i class="fa-solid fa-user-shield"></i></div>
+          <h3 class="concept-title">DCL &amp; Role-Based Security</h3>
+          <p class="concept-desc">
+            4 distinct RBAC roles (<code>INV_ADMIN_ROLE</code>, <code>INV_MANAGER_ROLE</code>, <code>INV_STAFF_ROLE</code>, <code>INV_AUDITOR_ROLE</code>)
+            with granular <code>GRANT</code> / <code>REVOKE</code> verified through Oracle's Data Dictionary catalog.
+          </p>
+          <div class="concept-code-preview">
+            <code>GRANT SELECT, INSERT ON ORDERS TO INV_STAFF_ROLE;</code><br>
+            <code>SELECT grantee, privilege FROM USER_TAB_PRIVS_MADE;</code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       INTERACTIVE SQL WORKBENCH & QUERY SIMULATOR
+       ============================================================================ -->
+  <section class="section" id="sql-workbench">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag"><i class="fa-solid fa-terminal"></i> Interactive Lab</div>
+        <h2 class="section-title">Live Oracle SQL Workbench Simulator</h2>
+        <p class="section-subtitle">
+          Select any curated DBMS viva query from the catalog, edit the SQL statement live,
+          execute it against our simulated Oracle execution engine, and inspect the performance explain plan.
+        </p>
+      </div>
+
+      <div class="workbench-card">
+        <!-- Workbench Controls -->
+        <div class="workbench-toolbar">
+          <div class="toolbar-left">
+            <label for="querySelector" class="toolbar-label"><i class="fa-solid fa-list-check"></i> Load Concept Demonstration:</label>
+            <select id="querySelector" class="form-select" onchange="loadSelectedQuery()">
+              <option value="JOIN_1">Q1: 4-Way INNER JOIN (Stock Catalog Valuation)</option>
+              <option value="JOIN_2">Q2: LEFT OUTER JOIN (Warehouses with Empty Handling)</option>
+              <option value="AGG_1">Q3: GROUP BY Category (Valuation &amp; Units)</option>
+              <option value="AGG_2">Q4: HAVING Clause (High Capacity Facilities &gt; 100 units)</option>
+              <option value="WIN_1">Q5: Window Function DENSE_RANK() by Category</option>
+              <option value="WIN_2">Q6: Running Total (Window Frame ROWS UNBOUNDED PRECEDING)</option>
+              <option value="SUB_1">Q7: Correlated Subquery (Highest Priced Product in Category)</option>
+              <option value="MERGE_1">Q8: Atomic MERGE Upsert (Inventory Synchronization)</option>
+              <option value="DCL_1">Q9: Data Dictionary Security (USER_TAB_PRIVS_MADE)</option>
+              <option value="AUDIT_1">Q10: Autonomous Trigger Audit Trail (AUDIT_LOGS)</option>
+            </select>
+          </div>
+          <div class="toolbar-right">
+            <button class="btn btn-outline btn-sm" onclick="copyCurrentSQL()"><i class="fa-solid fa-copy"></i> Copy SQL</button>
+            <button class="btn btn-secondary btn-sm" onclick="showExplainPlan()"><i class="fa-solid fa-chart-gantt"></i> Explain Plan</button>
+            <button class="btn btn-primary btn-sm" id="btnRunQuery" onclick="executeCurrentQuery()"><i class="fa-solid fa-bolt"></i> Execute Query</button>
+          </div>
+        </div>
+
+        <!-- Query Metadata Banner -->
+        <div class="query-info-banner">
+          <div class="query-info-item">
+            <span class="info-label">Concept Category:</span>
+            <span class="info-value" id="queryCategoryBadge">Multi-Table Joins</span>
+          </div>
+          <div class="query-info-item">
+            <span class="info-label">Description:</span>
+            <span class="info-value" id="queryDescription">Demonstrates 4-Way INNER JOIN linking PRODUCTS, CATEGORIES, INVENTORY, and WAREHOUSES.</span>
+          </div>
+        </div>
+
+        <!-- SQL Code Editor -->
+        <div class="sql-editor-container">
+          <div class="editor-gutter">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+          </div>
+          <textarea id="sqlCodeInput" class="sql-code-area" spellcheck="false"></textarea>
+        </div>
+
+        <!-- Query Output / Results Table -->
+        <div class="query-results-box" id="queryResultsBox">
+          <div class="results-header">
+            <div class="results-title">
+              <i class="fa-solid fa-table"></i> Query Execution Results
+              <span class="badge-results-count" id="resultsRowCount">15 rows</span>
+            </div>
+            <div class="results-meta">
+              <span id="resultsLatency"><i class="fa-solid fa-gauge-high"></i> Latency: <strong>8.2 ms</strong></span>
+              <span id="resultsStatus" class="text-green"><i class="fa-solid fa-check"></i> Status: <strong>SUCCESS (ORA-00000)</strong></span>
+            </div>
+          </div>
+          <div class="table-responsive results-table-wrapper" id="resultsTableContainer">
+            <!-- Dynamically populated by JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       PL/SQL PROCEDURES, FUNCTIONS & AUTONOMOUS TRIGGERS
+       ============================================================================ -->
+  <section class="section section-dark" id="plsql">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag"><i class="fa-solid fa-microchip"></i> Procedural Database Logic</div>
+        <h2 class="section-title">PL/SQL Stored Procedures &amp; Triggers</h2>
+        <p class="section-subtitle">
+          Ensuring deterministic transaction isolation, preventing negative stock levels,
+          and capturing tamper-proof audit trails at the database layer.
+        </p>
+      </div>
+
+      <div class="plsql-grid">
+        <!-- Procedure: Stock Transfer -->
+        <div class="plsql-card">
+          <div class="plsql-header">
+            <span class="badge-pill pulse"><i class="fa-solid fa-lock"></i> Row-Level Lock</span>
+            <h3 class="plsql-title">SP_TRANSFER_STOCK</h3>
+            <span class="plsql-type">PL/SQL Stored Procedure &bull; Atomic Transaction</span>
+          </div>
+          <p class="plsql-desc">
+            Executes atomic inter-warehouse transfers. Locks the source row with <code>SELECT ... FOR UPDATE</code>
+            to prevent race conditions, debits source stock, verifies available quantities, executes MERGE on target,
+            and issues an atomic <code>COMMIT</code> or full <code>ROLLBACK</code>.
+          </p>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span>Oracle PL/SQL</span>
+              <button class="copy-btn" onclick="copySnippet('plsql-transfer')"><i class="fa-solid fa-copy"></i></button>
+            </div>
+            <pre><code id="plsql-transfer">CREATE OR REPLACE PROCEDURE sp_transfer_stock(
+    p_product_id   IN NUMBER,
+    p_from_wh_id   IN NUMBER,
+    p_to_wh_id     IN NUMBER,
+    p_quantity     IN NUMBER,
+    p_performed_by IN VARCHAR2,
+    p_status       OUT VARCHAR2
+) AS
+    v_source_qty NUMBER;
+BEGIN
+    -- 1. Lock source row to avoid concurrency race
+    SELECT quantity_on_hand INTO v_source_qty
+    FROM INVENTORY
+    WHERE product_id = p_product_id AND warehouse_id = p_from_wh_id
+    FOR UPDATE;
+
+    IF v_source_qty &lt; p_quantity THEN
+        RAISE_APPLICATION_ERROR(-20001, 'Insufficient stock');
+    END IF;
+
+    -- 2. Debit source warehouse
+    UPDATE INVENTORY SET quantity_on_hand = quantity_on_hand - p_quantity
+    WHERE product_id = p_product_id AND warehouse_id = p_from_wh_id;
+
+    -- 3. Upsert target warehouse via MERGE
+    MERGE INTO INVENTORY t
+    USING (SELECT p_product_id AS pid, p_to_wh_id AS wid FROM DUAL) s
+    ON (t.product_id = s.pid AND t.warehouse_id = s.wid)
+    WHEN MATCHED THEN
+        UPDATE SET t.quantity_on_hand = t.quantity_on_hand + p_quantity
+    WHEN NOT MATCHED THEN
+        INSERT (product_id, warehouse_id, quantity_on_hand)
+        VALUES (p_product_id, p_to_wh_id, p_quantity);
+
+    COMMIT;
+    p_status := 'SUCCESS';
+EXCEPTION
+    WHEN OTHERS THEN
+        ROLLBACK;
+        p_status := 'FAILED: ' || SQLERRM;
+END;</code></pre>
+          </div>
+        </div>
+
+        <!-- Trigger: Audit Logging -->
+        <div class="plsql-card">
+          <div class="plsql-header">
+            <span class="badge-pill"><i class="fa-solid fa-shield-virus"></i> Autonomous Trigger</span>
+            <h3 class="plsql-title">TRG_AUDIT_PRODUCT_CHANGES</h3>
+            <span class="plsql-type">Database Row Trigger &bull; AFTER UPDATE / DELETE</span>
+          </div>
+          <p class="plsql-desc">
+            Automatically fires whenever product unit prices or costs are modified.
+            Archives historical pricing, modifier identity, and timestamps into the <code>AUDIT_LOGS</code> table,
+            providing non-repudiation for fiscal audits.
+          </p>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span>Oracle PL/SQL</span>
+              <button class="copy-btn" onclick="copySnippet('plsql-trigger')"><i class="fa-solid fa-copy"></i></button>
+            </div>
+            <pre><code id="plsql-trigger">CREATE OR REPLACE TRIGGER trg_audit_product_changes
+AFTER UPDATE OF unit_price, cost_price ON PRODUCTS
+FOR EACH ROW
+BEGIN
+    INSERT INTO AUDIT_LOGS (
+        table_name,
+        action_type,
+        record_id,
+        performed_by,
+        action_date,
+        details
+    ) VALUES (
+        'PRODUCTS',
+        'UPDATE',
+        TO_CHAR(:NEW.product_id),
+        USER,
+        SYSTIMESTAMP,
+        'Price updated for SKU ' || :NEW.sku || 
+        '. Old Price: $' || :OLD.unit_price || 
+        ', New Price: $' || :NEW.unit_price || 
+        ', Old Cost: $' || :OLD.cost_price || 
+        ', New Cost: $' || :NEW.cost_price
+    );
+END;</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       APPLICATION UI TOUR (9 STREAMLIT MODULES)
+       ============================================================================ -->
+  <section class="section" id="ui-tour">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag"><i class="fa-solid fa-laptop-code"></i> Interface Tour</div>
+        <h2 class="section-title">Streamlit Enterprise UI Modules</h2>
+        <p class="section-subtitle">
+          Explore the 9 modular view components engineered with Streamlit, Plotly,
+          and a custom navy-corporate design system.
+        </p>
+      </div>
+
+      <!-- UI Modules Tabs -->
+      <div class="ui-tabs-container">
+        <div class="ui-tabs-nav" id="uiTabsNav">
+          <button class="ui-tab-btn active" onclick="switchUITab(0)">
+            <i class="fa-solid fa-chart-pie"></i> Executive Dashboard
+          </button>
+          <button class="ui-tab-btn" onclick="switchUITab(1)">
+            <i class="fa-solid fa-boxes-stacked"></i> Products CRUD
+          </button>
+          <button class="ui-tab-btn" onclick="switchUITab(2)">
+            <i class="fa-solid fa-warehouse"></i> Warehouses &amp; Matrix
+          </button>
+          <button class="ui-tab-btn" onclick="switchUITab(3)">
+            <i class="fa-solid fa-cart-shopping"></i> Orders &amp; POS Billing
+          </button>
+          <button class="ui-tab-btn" onclick="switchUITab(4)">
+            <i class="fa-solid fa-arrow-right-arrow-left"></i> Stock Movements
+          </button>
+          <button class="ui-tab-btn" onclick="switchUITab(5)">
+            <i class="fa-solid fa-handshake"></i> Business Partners
+          </button>
+          <button class="ui-tab-btn" onclick="switchUITab(6)">
+            <i class="fa-solid fa-terminal"></i> SQL Workbench
+          </button>
+          <button class="ui-tab-btn" onclick="switchUITab(7)">
+            <i class="fa-solid fa-user-shield"></i> DCL &amp; Audit Security
+          </button>
+          <button class="ui-tab-btn" onclick="switchUITab(8)">
+            <i class="fa-solid fa-sliders"></i> DB Diagnostics
+          </button>
+        </div>
+
+        <!-- Tab Content Panes -->
+        <div class="ui-tab-panes" id="uiTabPanes">
+          <!-- Pane 0: Executive Dashboard -->
+          <div class="ui-tab-pane active">
+            <div class="ui-showcase-grid">
+              <div class="ui-showcase-details">
+                <span class="badge-pill"><i class="fa-solid fa-chart-line"></i> Real-Time Analytics</span>
+                <h3>Executive Inventory Dashboard</h3>
+                <p>
+                  High-level executive cockpit displaying live business metrics calculated directly via Oracle SQL compiled views:
+                  Total SKUs, aggregate stock valuation, inventory health, and revenue.
+                </p>
+                <div class="ui-feature-checklist">
+                  <div class="feature-item"><i class="fa-solid fa-circle-check"></i> <strong>5 Core Metric Cards:</strong> Products, Stock Units, Valuation, Low Stock Alerts, and Revenue.</div>
+                  <div class="feature-item"><i class="fa-solid fa-circle-check"></i> <strong>Plotly Donut Visualizations:</strong> Stock distributions categorized by industry sector.</div>
+                  <div class="feature-item"><i class="fa-solid fa-circle-check"></i> <strong>Warehouse Occupancy Bars:</strong> Real-time capacity utilization percentages.</div>
+                  <div class="feature-item"><i class="fa-solid fa-circle-check"></i> <strong>Deficit Warning Banners:</strong> Instant alerts for items under safety stock threshold.</div>
+                </div>
+              </div>
+              <div class="ui-showcase-preview">
+                <div class="mockup-frame">
+                  <div class="mockup-topbar">
+                    <span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span>
+                    <span class="mockup-title">ui/views/dashboard_view.py</span>
+                  </div>
+                  <div class="mockup-body">
+                    <div class="mock-metric-row">
+                      <div class="mock-metric-box">
+                        <span class="lbl">TOTAL PRODUCTS</span>
+                        <span class="val text-cyan">24 Active</span>
+                      </div>
+                      <div class="mock-metric-box">
+                        <span class="lbl">RETAIL VALUATION</span>
+                        <span class="val text-green">$482,950</span>
+                      </div>
+                      <div class="mock-metric-box">
+                        <span class="lbl">LOW STOCK ALERTS</span>
+                        <span class="val text-red">3 Critical</span>
+                      </div>
+                    </div>
+                    <div class="mock-chart-container">
+                      <div class="mock-chart-bar-title">Warehouse Occupancy Capacity</div>
+                      <div class="mock-bar-item">
+                        <span>Central Hub (Austin)</span>
+                        <div class="mock-progress-bar"><div class="fill fill-cyan" style="width: 78%;"></div></div>
+                        <span>78%</span>
+                      </div>
+                      <div class="mock-bar-item">
+                        <span>Pacific Depot (Seattle)</span>
+                        <div class="mock-progress-bar"><div class="fill fill-green" style="width: 62%;"></div></div>
+                        <span>62%</span>
+                      </div>
+                      <div class="mock-bar-item">
+                        <span>Atlantic Logistics (Newark)</span>
+                        <div class="mock-progress-bar"><div class="fill fill-yellow" style="width: 89%;"></div></div>
+                        <span>89%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pane 1: Products CRUD -->
+          <div class="ui-tab-pane">
+            <div class="ui-showcase-grid">
+              <div class="ui-showcase-details">
+                <span class="badge-pill"><i class="fa-solid fa-boxes-stacked"></i> Master Catalog</span>
+                <h3>Products &amp; Categories CRUD</h3>
+                <p>
+                  Industrial-grade catalog manager with client and database level constraint verification.
+                  Features live search, category multi-filters, price markup calculations, and soft/hard deletion safeguards.
+                </p>
+                <div class="ui-feature-checklist">
+                  <div class="feature-item"><i class="fa-solid fa-circle-check"></i> <strong>Automated SKU Generator:</strong> Generates formatted enterprise SKU identifiers.</div>
+                  <div class="feature-item"><i class="fa-solid fa-circle-check"></i> <strong>Constraint Guard:</strong> Prevents <code>unit_price &lt; cost_price</code> prior to SQL execution.</div>
+                  <div class="feature-item"><i class="fa-solid fa-circle-check"></i> <strong>Trigger Audit Log:</strong> Edits to pricing trigger audit archiving in Oracle.</div>
+                </div>
+              </div>
+              <div class="ui-showcase-preview">
+                <div class="mockup-frame">
+                  <div class="mockup-topbar">
+                    <span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span>
+                    <span class="mockup-title">ui/views/products_view.py</span>
+                  </div>
+                  <div class="mockup-body">
+                    <div class="mock-search-bar">
+                      <i class="fa-solid fa-magnifying-glass"></i> Filter by SKU, Category, or Supplier...
+                    </div>
+                    <div class="mock-table-mini">
+                      <div class="th-row">
+                        <span>SKU</span><span>PRODUCT</span><span>CATEGORY</span><span>UNIT PRICE</span>
+                      </div>
+                      <div class="tr-row">
+                        <code>SKU-ELC-001</code><span>Industrial PLC Controller</span><span>Automation</span><span class="text-green">$849.00</span>
+                      </div>
+                      <div class="tr-row">
+                        <code>SKU-SNS-014</code><span>Ultrasonic Range Transducer</span><span>Sensorics</span><span class="text-green">$189.50</span>
+                      </div>
+                      <div class="tr-row">
+                        <code>SKU-PWR-009</code><span>3-Phase Harmonic Inverter</span><span>Power</span><span class="text-green">$1,240.00</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pane 2: Warehouses & Stock Matrix -->
+          <div class="ui-tab-pane">
+            <div class="ui-showcase-grid">
+              <div class="ui-showcase-details">
+                <span class="badge-pill"><i class="fa-solid fa-warehouse"></i> Multi-Facility Logistics</span>
+                <h3>Warehouses &amp; Stock Matrix</h3>
+                <p>
+                  Two-dimensional inventory matrix mapping SKUs across all distributed geographical warehouses.
+                  Integrates direct atomic MERGE upserts for stock reconciliation.
+                </p>
+                <div class="ui-feature-checklist">
+                  <div class="feature-item"><i class="fa-solid fa-circle-check"></i> <strong>2D Pivot Matrix:</strong> View products in rows and warehouses in columns.</div>
+                  <div class="feature-item"><i class="fa-solid fa-circle-check"></i> <strong>Capacity Monitoring:</strong> Alerts when warehouse capacity exceeds 90%.</div>
+                  <div class="feature-item"><i class="fa-solid fa-circle-check"></i> <strong>Zero Stock Visuals:</strong> Highlights out-of-stock locations in red badges.</div>
+                </div>
+              </div>
+              <div class="ui-showcase-preview">
+                <div class="mockup-frame">
+                  <div class="mockup-topbar">
+                    <span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span>
+                    <span class="mockup-title">ui/views/warehouses_view.py</span>
+                  </div>
+                  <div class="mockup-body">
+                    <div class="mock-table-mini">
+                      <div class="th-row">
+                        <span>PRODUCT NAME</span><span>AUSTIN HUB</span><span>SEATTLE DEPOT</span><span>NEWARK</span>
+                      </div>
+                      <div class="tr-row">
+                        <span>PLC Controller v2</span><span class="badge-table-green">45 units</span><span class="badge-table-green">28 units</span><span class="badge-table-yellow">12 units</span>
+                      </div>
+                      <div class="tr-row">
+                        <span>Ultrasonic Sensor</span><span class="badge-table-green">110 units</span><span class="badge-table-red">0 (OUT)</span><span class="badge-table-green">40 units</span>
+                      </div>
+                      <div class="tr-row">
+                        <span>Harmonic Inverter</span><span class="badge-table-green">15 units</span><span class="badge-table-green">8 units</span><span class="badge-table-green">19 units</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pane 3: Orders & POS Billing -->
+          <div class="ui-tab-pane">
+            <div class="ui-showcase-grid">
+              <div class="ui-showcase-details">
+                <span class="badge-pill"><i class="fa-solid fa-cart-shopping"></i> Transaction Engine</span>
+                <h3>Sales Orders &amp; POS Billing Cart</h3>
+                <p>
+                  End-to-end point-of-sale checkout flow. Validates warehouse stock on hand in real-time,
+                  calculates automated state sales tax (8.00%), generates unique sequential order codes,
+                  and produces formatted printable tax invoices.
+                </p>
+                <div class="ui-feature-checklist">
+                  <div class="feature-item"><i class="fa-solid fa-circle-check"></i> <strong>Dynamic Cart Session:</strong> Add, edit quantity, or remove line items live.</div>
+                  <div class="feature-item"><i class="fa-solid fa-circle-check"></i> <strong>Real-time Stock Guard:</strong> Cannot order more than physical inventory held.</div>
+                  <div class="feature-item"><i class="fa-solid fa-circle-check"></i> <strong>Multi-Table Insertion:</strong> Inserts parent <code>ORDERS</code> and child <code>ORDER_ITEMS</code> atomically.</div>
+                </div>
+              </div>
+              <div class="ui-showcase-preview">
+                <div class="mockup-frame">
+                  <div class="mockup-topbar">
+                    <span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span>
+                    <span class="mockup-title">ui/views/orders_view.py</span>
+                  </div>
+                  <div class="mockup-body">
+                    <div class="mock-invoice-box">
+                      <div class="inv-head">
+                        <strong>INVOICE: ORD-202610-0089</strong>
+                        <span class="badge-status-green">PAID / COMPLETED</span>
+                      </div>
+                      <div class="inv-meta">Customer: Tesla Giga Austin &bull; Warehouse: Central Hub</div>
+                      <div class="inv-total-row">
+                        <span>Subtotal: $4,890.00</span>
+                        <span>Tax (8%): $391.20</span>
+                        <strong class="text-green">Total: $5,281.20</strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pane 4: Stock Movements -->
+          <div class="ui-tab-pane">
+            <div class="ui-showcase-grid">
+              <div class="ui-showcase-details">
+                <span class="badge-pill"><i class="fa-solid fa-arrow-right-arrow-left"></i> Inventory Flow</span>
+                <h3>Stock Movements &amp; Transfers</h3>
+                <p>
+                  Execution interface for inbound stock intake (Purchase Receipts), outbound fulfillment,
+                  and inter-warehouse transfers backed by the PL/SQL stored procedure <code>SP_TRANSFER_STOCK</code>.
+                </p>
+                <div class="ui-feature-checklist">
+                  <div class="feature-item"><i class="fa-solid fa-circle-check"></i> <strong>Atomic Double-Entry:</strong> Ensures debit from origin and credit to destination succeed concurrently.</div>
+                  <div class="feature-item"><i class="fa-solid fa-circle-check"></i> <strong>Transaction Ledger:</strong> Records immutable movement entries in <code>STOCK_TRANSACTIONS</code>.</div>
+                </div>
+              </div>
+              <div class="ui-showcase-preview">
+                <div class="mockup-frame">
+                  <div class="mockup-topbar">
+                    <span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span>
+                    <span class="mockup-title">ui/views/stock_movement_view.py</span>
+                  </div>
+                  <div class="mockup-body">
+                    <div class="mock-transfer-ui">
+                      <div class="step-lbl">Select Transfer Source &amp; Destination:</div>
+                      <div class="mock-flow-box">
+                        <span>Austin Hub (Stock: 120)</span>
+                        <i class="fa-solid fa-arrow-right text-cyan"></i>
+                        <span>Seattle Depot (Stock: 15)</span>
+                      </div>
+                      <div class="mock-btn-row">
+                        <span class="text-white">Quantity: <strong>30 units</strong></span>
+                        <span class="badge-status-green"><i class="fa-solid fa-check"></i> SP_TRANSFER_STOCK Success</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pane 5: Business Partners -->
+          <div class="ui-tab-pane">
+            <div class="ui-showcase-grid">
+              <div class="ui-showcase-details">
+                <span class="badge-pill"><i class="fa-solid fa-handshake"></i> CRM &amp; SRM</span>
+                <h3>Suppliers &amp; Customers Directory</h3>
+                <p>
+                  Stakeholder directory implementing domain checks: 1-5 star vendor ratings,
+                  corporate customer classifications (Retail, Wholesale, Corporate), and contact registry.
+                </p>
+                <div class="ui-feature-checklist">
+                  <div class="feature-item"><i class="fa-solid fa-circle-check"></i> <strong>Supplier Quality Scorecards:</strong> Visual star ratings and active fulfillment status.</div>
+                  <div class="feature-item"><i class="fa-solid fa-circle-check"></i> <strong>Customer Tiers:</strong> Wholesale vs Corporate discount categorizations.</div>
+                </div>
+              </div>
+              <div class="ui-showcase-preview">
+                <div class="mockup-frame">
+                  <div class="mockup-topbar">
+                    <span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span>
+                    <span class="mockup-title">ui/views/partners_view.py</span>
+                  </div>
+                  <div class="mockup-body">
+                    <div class="mock-table-mini">
+                      <div class="th-row">
+                        <span>NAME</span><span>EMAIL</span><span>RATING / TIER</span>
+                      </div>
+                      <div class="tr-row">
+                        <span>Apex Silicon Technologies</span><span>contact@apexsilicon.com</span><span class="text-yellow">★★★★★ (5.0)</span>
+                      </div>
+                      <div class="tr-row">
+                        <span>Precision Sensorics Corp</span><span>orders@precisionsens.de</span><span class="text-yellow">★★★★☆ (4.5)</span>
+                      </div>
+                      <div class="tr-row">
+                        <span>Global Logistics Wholesale</span><span>procure@globallog.com</span><span class="badge-table-green">CORPORATE</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pane 6: SQL Workbench -->
+          <div class="ui-tab-pane">
+            <div class="ui-showcase-grid">
+              <div class="ui-showcase-details">
+                <span class="badge-pill"><i class="fa-solid fa-terminal"></i> Viva Feature</span>
+                <h3>SQL Workbench &amp; Concept Showcase</h3>
+                <p>
+                  Interactive query environment built for viva presentations.
+                  Allows examiners to run arbitrary SQL statements or choose from curated demonstration queries with performance timings.
+                </p>
+                <div class="ui-feature-checklist">
+                  <div class="feature-item"><i class="fa-solid fa-circle-check"></i> <strong>Data Dictionary Browser:</strong> Inspect columns, types, and constraints for any table.</div>
+                  <div class="feature-item"><i class="fa-solid fa-circle-check"></i> <strong>Curated Demonstrations:</strong> 1-click execution for Joins, Subqueries, and Window Functions.</div>
+                </div>
+              </div>
+              <div class="ui-showcase-preview">
+                <div class="mockup-frame">
+                  <div class="mockup-topbar">
+                    <span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span>
+                    <span class="mockup-title">ui/views/sql_workbench_view.py</span>
+                  </div>
+                  <div class="mockup-body">
+                    <div class="mock-editor-pane">
+                      <code>SELECT p.sku, DENSE_RANK() OVER (ORDER BY p.unit_price DESC) AS price_rank FROM PRODUCTS p;</code>
+                    </div>
+                    <div class="mock-btn-bar">
+                      <span class="text-green"><i class="fa-solid fa-check"></i> Query executed in 7ms</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pane 7: DCL Security -->
+          <div class="ui-tab-pane">
+            <div class="ui-showcase-grid">
+              <div class="ui-showcase-details">
+                <span class="badge-pill"><i class="fa-solid fa-user-shield"></i> Governance</span>
+                <h3>DCL, RBAC &amp; Audit Security Console</h3>
+                <p>
+                  Role-Based Access Control matrix. Execute live <code>GRANT</code> and <code>REVOKE</code> commands
+                  and inspect real-time permissions through Oracle's <code>USER_TAB_PRIVS_MADE</code> Data Dictionary view.
+                </p>
+                <div class="ui-feature-checklist">
+                  <div class="feature-item"><i class="fa-solid fa-circle-check"></i> <strong>4 Distinct Roles:</strong> Admin, Manager, Staff (Cashier), and Auditor.</div>
+                  <div class="feature-item"><i class="fa-solid fa-circle-check"></i> <strong>Data Dictionary Auditing:</strong> Dynamic privilege introspection.</div>
+                </div>
+              </div>
+              <div class="ui-showcase-preview">
+                <div class="mockup-frame">
+                  <div class="mockup-topbar">
+                    <span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span>
+                    <span class="mockup-title">ui/views/dcl_security_view.py</span>
+                  </div>
+                  <div class="mockup-body">
+                    <div class="mock-table-mini">
+                      <div class="th-row"><span>GRANTEE ROLE</span><span>TABLE</span><span>PRIVILEGE</span></div>
+                      <div class="tr-row"><span>INV_STAFF_ROLE</span><span>ORDERS</span><span class="badge-table-green">INSERT, SELECT</span></div>
+                      <div class="tr-row"><span>INV_AUDITOR_ROLE</span><span>ALL_TABLES</span><span class="badge-table-green">SELECT ONLY</span></div>
+                      <div class="tr-row"><span>INV_MANAGER_ROLE</span><span>PRODUCTS</span><span class="badge-table-yellow">SELECT, UPDATE</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pane 8: DB Diagnostics -->
+          <div class="ui-tab-pane">
+            <div class="ui-showcase-grid">
+              <div class="ui-showcase-details">
+                <span class="badge-pill"><i class="fa-solid fa-sliders"></i> Operations</span>
+                <h3>Database Settings &amp; Diagnostics</h3>
+                <p>
+                  Health monitor verifying live Oracle database connection latency, active database banner,
+                  and providing a 1-click schema drop &amp; re-seeding button for clean viva resets.
+                </p>
+                <div class="ui-feature-checklist">
+                  <div class="feature-item"><i class="fa-solid fa-circle-check"></i> <strong>Ping Diagnostic:</strong> Verifies host, port, service name, and user session.</div>
+                  <div class="feature-item"><i class="fa-solid fa-circle-check"></i> <strong>1-Click Re-seeder:</strong> Runs <code>db_init.py</code> to regenerate pristine sample data.</div>
+                </div>
+              </div>
+              <div class="ui-showcase-preview">
+                <div class="mockup-frame">
+                  <div class="mockup-topbar">
+                    <span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span>
+                    <span class="mockup-title">ui/views/settings_view.py</span>
+                  </div>
+                  <div class="mockup-body">
+                    <div class="diag-item"><span>Oracle Engine:</span><strong class="text-white">Oracle Database 23ai Free</strong></div>
+                    <div class="diag-item"><span>PDB Service:</span><strong class="text-cyan">FREEPDB1 @ localhost:1521</strong></div>
+                    <div class="diag-item"><span>Driver Mode:</span><strong class="text-green">python-oracledb (Thin Mode)</strong></div>
+                    <div class="diag-item"><span>Status:</span><span class="badge-status-green">HEALTHY (0ms latency)</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       VIVA DEFENSE & INTERVIEW GUIDE (ACADEMIC EVALUATION)
+       ============================================================================ -->
+  <section class="section section-dark" id="viva-guide">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag"><i class="fa-solid fa-graduation-cap"></i> Examiner Guide</div>
+        <h2 class="section-title">Step-by-Step Viva Demonstration &amp; Defense</h2>
+        <p class="section-subtitle">
+          Recommended viva demonstration roadmap and structured answers to the most common
+          DBMS and Oracle questions asked by academic examiners.
+        </p>
+      </div>
+
+      <!-- Viva Roadmap Cards -->
+      <div class="viva-roadmap-grid">
+        <div class="roadmap-card">
+          <div class="step-num">STEP 1</div>
+          <h4 class="step-title">Show DB Connection &amp; Engine</h4>
+          <p class="step-desc">
+            Open <strong>Settings &amp; Diagnostics</strong>. Highlight the Oracle 23ai Free release banner,
+            connected PDB (<code>FREEPDB1</code>), and explain the Thin Driver connection architecture.
+          </p>
+        </div>
+        <div class="roadmap-card">
+          <div class="step-num">STEP 2</div>
+          <h4 class="step-title">Show Schema &amp; Constraints (DDL)</h4>
+          <p class="step-desc">
+            Open <strong>SQL Workbench &rarr; Data Dictionary Explorer</strong>. Select <code>PRODUCTS</code> to showcase
+            the Check constraint <code>chk_price_gte_cost</code> and foreign keys.
+          </p>
+        </div>
+        <div class="roadmap-card">
+          <div class="step-num">STEP 3</div>
+          <h4 class="step-title">Demonstrate CRUD &amp; Triggers (DML)</h4>
+          <p class="step-desc">
+            Create a product, update its unit price, and navigate to <strong>DCL &amp; Security</strong> to prove that
+            the autonomous Oracle trigger archived before/after prices into <code>AUDIT_LOGS</code>.
+          </p>
+        </div>
+        <div class="roadmap-card">
+          <div class="step-num">STEP 4</div>
+          <h4 class="step-title">Demonstrate Complex Queries</h4>
+          <p class="step-desc">
+            Execute 4-Way Joins, the Category Aggregation with <code>HAVING</code>, and the <code>DENSE_RANK()</code>
+            Window Function in the live SQL Console.
+          </p>
+        </div>
+        <div class="roadmap-card">
+          <div class="step-num">STEP 5</div>
+          <h4 class="step-title">Show ACID Stock Transfers</h4>
+          <p class="step-desc">
+            Execute a stock transfer in <strong>Stock Movements</strong>, demonstrating the PL/SQL stored procedure
+            with <code>SELECT FOR UPDATE</code> row locks and atomic commit.
+          </p>
+        </div>
+      </div>
+
+      <!-- Viva Q&A Accordion -->
+      <div class="viva-qa-section">
+        <h3 class="viva-qa-heading"><i class="fa-solid fa-circle-question"></i> Top Examiner Viva Questions &amp; Model Answers</h3>
+        
+        <div class="accordion">
+          <!-- Q1 -->
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <span><i class="fa-solid fa-circle-dot text-cyan"></i> 1. Why choose Oracle SQL 23ai instead of MySQL or SQLite for this enterprise system?</span>
+              <i class="fa-solid fa-chevron-down arrow-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <p>
+                <strong>Model Answer:</strong> Oracle 23ai was chosen because enterprise supply chains demand industrial database features:
+              </p>
+              <ul>
+                <li><strong>Fine-Grained ACID Concurrency:</strong> Oracle supports row-level locking via <code>SELECT ... FOR UPDATE</code> and multi-version concurrency control (MVCC) without blocking reads.</li>
+                <li><strong>Native Procedural PL/SQL:</strong> Enables executing business logic (like stock balance validations and multi-warehouse debits/credits) directly inside the database kernel, avoiding network latency and distributed failure states.</li>
+                <li><strong>Atomic MERGE (Upsert):</strong> Full support for ANSI-standard MERGE statements to atomically insert or update inventory in a single pass.</li>
+                <li><strong>Enterprise Data Dictionary &amp; Security:</strong> Deep metadata catalogs (<code>USER_TAB_PRIVS_MADE</code>, <code>USER_CONSTRAINTS</code>) that power our dynamic security console.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <span><i class="fa-solid fa-circle-dot text-cyan"></i> 2. Explain how your database schema satisfies the Third Normal Form (3NF).</span>
+              <i class="fa-solid fa-chevron-down arrow-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <p>
+                <strong>Model Answer:</strong> The schema strictly conforms to Third Normal Form across three validation stages:
+              </p>
+              <ul>
+                <li><strong>1NF (Atomicity):</strong> Every table attribute contains atomic, indivisible values. No repeating groups or array columns exist (e.g., individual order items are normalized into the separate <code>ORDER_ITEMS</code> relation).</li>
+                <li><strong>2NF (Full Functional Dependency):</strong> All non-key attributes are fully functionally dependent on the entire primary key. In composite-key associative tables such as <code>INVENTORY (product_id, warehouse_id)</code>, attributes like <code>quantity_on_hand</code> depend on both keys, not just one.</li>
+                <li><strong>3NF (No Transitive Dependencies):</strong> No non-key attribute is dependent on another non-key attribute. For example, product category details (like category description) reside in <code>CATEGORIES</code>, not in <code>PRODUCTS</code>; supplier email and rating reside in <code>SUPPLIERS</code>.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <span><i class="fa-solid fa-circle-dot text-cyan"></i> 3. How does the application prevent SQL Injection attacks?</span>
+              <i class="fa-solid fa-chevron-down arrow-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <p>
+                <strong>Model Answer:</strong> The system enforces parameterized queries across all database service layers (<code>dml_manager.py</code>, <code>query_service.py</code>).
+                User inputs are passed as positional or named bind variables (e.g., <code>:p_sku</code>, <code>:p_price</code>) to the <code>python-oracledb</code> driver rather than using raw string concatenation (f-strings).
+                This ensures Oracle compiles the SQL execution tree first, treating user input purely as literal data values and rendering injection payloads inert.
+              </p>
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <span><i class="fa-solid fa-circle-dot text-cyan"></i> 4. What is the difference between DELETE and TRUNCATE, and how is it utilized here?</span>
+              <i class="fa-solid fa-chevron-down arrow-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <p>
+                <strong>Model Answer:</strong>
+              </p>
+              <ul>
+                <li><strong>DELETE:</strong> A DML operation that removes rows individually, logs undo/redo data, can be rolled back, and <em>fires database triggers</em>. In our system, product deletions fire <code>TRG_AUDIT_PRODUCT_DELETE</code> to record who removed the item into <code>AUDIT_LOGS</code>.</li>
+                <li><strong>TRUNCATE:</strong> A DDL operation that deallocates storage extents instantly, cannot be rolled back in most configurations, and <em>bypasses all DML triggers</em>. In our setup, <code>TRUNCATE</code> is reserved for administrative clean-slate re-initialization scripts.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <span><i class="fa-solid fa-circle-dot text-cyan"></i> 5. How does the MERGE statement work in the Stock Matrix tab?</span>
+              <i class="fa-solid fa-chevron-down arrow-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <p>
+                <strong>Model Answer:</strong> The <code>MERGE</code> (Upsert) statement performs conditional conditional DML.
+                When inventory is recorded for a product at a warehouse:
+              </p>
+              <ul>
+                <li>If a record already exists with matching <code>(product_id, warehouse_id)</code>, Oracle executes the <code>WHEN MATCHED THEN UPDATE</code> branch to update <code>quantity_on_hand</code>.</li>
+                <li>If no record exists, Oracle executes the <code>WHEN NOT MATCHED THEN INSERT</code> branch to create a new row with identity key.</li>
+                <li>This executes in a single database round-trip without race conditions or client-side <code>SELECT ... IF EXISTS</code> logic.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       SETUP & RENDER DEPLOYMENT GUIDE
+       ============================================================================ -->
+  <section class="section" id="quickstart">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag"><i class="fa-solid fa-rocket"></i> Installation &amp; Cloud Launch</div>
+        <h2 class="section-title">Deployment &amp; Quickstart Guide</h2>
+        <p class="section-subtitle">
+          Run ApexStock locally in under 3 minutes or deploy this portfolio website to Render with zero configuration.
+        </p>
+      </div>
+
+      <div class="deploy-grid">
+        <!-- Local Setup Guide -->
+        <div class="deploy-card">
+          <div class="deploy-card-header">
+            <i class="fa-solid fa-laptop-code text-cyan"></i>
+            <div>
+              <h3>Run ApexStock IMS Locally</h3>
+              <span class="sub">Python 3.10+ &bull; Oracle Database 23ai / 21c</span>
+            </div>
+          </div>
+          <div class="deploy-steps">
+            <div class="deploy-step-item">
+              <span class="step-badge">1</span>
+              <div>
+                <strong>Clone &amp; Install Dependencies</strong>
+                <pre class="terminal-snippet"><code>cd Mini-Pro
+pip install -r requirements.txt</code></pre>
+              </div>
+            </div>
+            <div class="deploy-step-item">
+              <span class="step-badge">2</span>
+              <div>
+                <strong>Configure Oracle Credentials in <code>.env</code></strong>
+                <pre class="terminal-snippet"><code>ORACLE_USER=inv_admin
+ORACLE_PASSWORD=Inventory123#
+ORACLE_HOST=localhost
+ORACLE_PORT=1521
+ORACLE_SERVICE_NAME=FREEPDB1</code></pre>
+              </div>
+            </div>
+            <div class="deploy-step-item">
+              <span class="step-badge">3</span>
+              <div>
+                <strong>Initialize Database Schema &amp; Seed Data</strong>
+                <pre class="terminal-snippet"><code>python -m database.db_init</code></pre>
+              </div>
+            </div>
+            <div class="deploy-step-item">
+              <span class="step-badge">4</span>
+              <div>
+                <strong>Launch Streamlit Web Interface</strong>
+                <pre class="terminal-snippet"><code>python -m streamlit run app.py
+# Or double click run_app.bat</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Render Deploy Guide -->
+        <div class="deploy-card active-border" id="deploy-render">
+          <div class="deploy-card-header">
+            <i class="fa-solid fa-cloud-arrow-up text-green"></i>
+            <div>
+              <h3>Deploy Portfolio to Render.com</h3>
+              <span class="sub">Render Blueprint Ready &bull; Free Global CDN</span>
+            </div>
+          </div>
+          <div class="deploy-steps">
+            <div class="deploy-step-item">
+              <span class="step-badge">A</span>
+              <div>
+                <strong>Option 1: Render Static Site (Recommended — 100% Free)</strong>
+                <p class="text-muted">Instant global CDN, zero cold-starts, zero server maintenance:</p>
+                <ul class="clean-list">
+                  <li>Log into <a href="https://render.com" target="_blank" rel="noopener" class="text-cyan">Render.com</a> and click <strong>New &rarr; Static Site</strong>.</li>
+                  <li>Connect your GitHub repository.</li>
+                  <li>Set <strong>Root Directory:</strong> <code>portfolio</code> (or repository root if in root).</li>
+                  <li>Set <strong>Build Command:</strong> <em>(leave blank)</em></li>
+                  <li>Set <strong>Publish Directory:</strong> <code>.</code></li>
+                  <li>Click <strong>Create Static Site</strong> &mdash; live in ~30 seconds!</li>
+                </ul>
+              </div>
+            </div>
+            <div class="deploy-step-item">
+              <span class="step-badge">B</span>
+              <div>
+                <strong>Option 2: Render Web Service (Node.js Express / Blueprint)</strong>
+                <p class="text-muted">Uses the included <code>render.yaml</code>, <code>server.js</code>, and <code>package.json</code>:</p>
+                <ul class="clean-list">
+                  <li>In Render Dashboard, click <strong>New &rarr; Blueprint</strong>.</li>
+                  <li>Select your repo; Render will automatically detect <code>render.yaml</code>.</li>
+                  <li>Or manually create a <strong>Web Service</strong> with:</li>
+                  <li><strong>Build Command:</strong> <code>npm install</code></li>
+                  <li><strong>Start Command:</strong> <code>npm start</code></li>
+                </ul>
+              </div>
+            </div>
+            <div class="deploy-step-item">
+              <span class="step-badge">C</span>
+              <div>
+                <strong>Option 3: Run Portfolio Locally</strong>
+                <pre class="terminal-snippet"><code># Node.js Express server:
+npm install &amp;&amp; npm start
+# OR lightweight Python server:
+python server.py</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       PROJECT AUTHOR & ACADEMIC CREDITS
+       ============================================================================ -->
+  <section class="section section-dark" id="author">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag"><i class="fa-solid fa-user-astronaut"></i> Project Architect &amp; Developer</div>
+        <h2 class="section-title">Diwakar Jha — Lead Architect</h2>
+        <p class="section-subtitle">
+          University Institute of Computing &bull; Chandigarh University &bull; MCA (Artificial Intelligence &amp; Machine Learning, Semester 3).
+        </p>
+      </div>
+
+      <div class="authors-grid single-author">
+        <!-- Author: Diwakar Jha -->
+        <div class="author-card">
+          <div class="author-avatar">
+            <i class="fa-solid fa-user-astronaut"></i>
+          </div>
+          <h3 class="author-name">Diwakar Jha</h3>
+          <span class="author-uid">University ID: 25MCI10342</span>
+          <span class="author-role">MCA (AI &amp; ML) &bull; Lead System Architect &amp; Full-Stack DBMS Developer</span>
+          <p class="author-bio">
+            Spearheaded the complete end-to-end architecture: Oracle 23ai relational schema (10 normalized 3NF tables),
+            atomic PL/SQL stored procedures with row-level locks, autonomous audit triggers,
+            Python data access layer with connection management, and the Streamlit enterprise interface with interactive Plotly analytics.
+          </p>
+          <div class="author-badges">
+            <span class="badge-tag">Oracle SQL 23ai</span>
+            <span class="badge-tag">PL/SQL Procedures</span>
+            <span class="badge-tag">Python &amp; Streamlit</span>
+            <span class="badge-tag">Plotly Analytics</span>
+            <span class="badge-tag">3NF Modeling</span>
+            <span class="badge-tag">DCL Security</span>
+            <span class="badge-tag">Render Cloud Deploy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       FOOTER
+       ============================================================================ -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <div class="brand-icon">📦</div>
+            <div class="brand-text">
+              <span class="brand-title">ApexStock</span>
+              <span class="brand-tag">Enterprise IMS</span>
+            </div>
+          </div>
+          <p class="footer-tagline">
+            Industrial-Grade Inventory &amp; Supply Chain Automation with Oracle SQL &amp; Streamlit.<br>
+            University Institute of Computing &bull; Chandigarh University &bull; MCA (Artificial Intelligence &amp; Machine Learning).
+          </p>
+        </div>
+        <div class="footer-links-group">
+          <div class="footer-col">
+            <h4>Curriculum Modules</h4>
+            <a href="#schema">Relational ERD (3NF)</a>
+            <a href="#dbms-concepts">DDL &amp; Constraints</a>
+            <a href="#plsql">PL/SQL &amp; Triggers</a>
+            <a href="#sql-workbench">Window Functions</a>
+          </div>
+          <div class="footer-col">
+            <h4>Application Views</h4>
+            <a href="#ui-tour">Executive Dashboard</a>
+            <a href="#ui-tour">Warehouses Matrix</a>
+            <a href="#ui-tour">POS Sales Invoicing</a>
+            <a href="#ui-tour">DCL Security &amp; RBAC</a>
+          </div>
+          <div class="footer-col">
+            <h4>Academic Defense</h4>
+            <a href="#viva-guide">Viva Demonstration Steps</a>
+            <a href="#viva-guide">Top Viva Q&amp;A</a>
+            <a href="#quickstart">Local Setup Guide</a>
+            <a href="#deploy-render">Render Cloud Deploy</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          &copy; 2026 <strong>ApexStock Enterprise</strong>. Submitted by <strong>Diwakar Jha (25MCI10342)</strong> &bull; University Institute of Computing, Chandigarh University.
+        </div>
+        <div class="footer-scroll-top">
+          <a href="#" class="btn-scroll-top" title="Scroll to Top"><i class="fa-solid fa-arrow-up"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================================
+       TABLE DETAILS MODAL (FOR ERD EXPLORER)
+       ============================================================================ -->
+  <div class="modal-overlay" id="tableModal" onclick="closeTableModal(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div class="modal-title-box">
+          <span class="badge-pill" id="modalTableBadge">RELATIONAL TABLE</span>
+          <h3 id="modalTableName">PRODUCTS</h3>
+        </div>
+        <button class="modal-close-btn" onclick="closeTableModalDirect()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <p id="modalTableDesc" class="modal-desc"></p>
+        
+        <h4 class="modal-subheading"><i class="fa-solid fa-list"></i> Table Schema &amp; Constraints</h4>
+        <div class="table-responsive">
+          <table class="data-table" id="modalColumnsTable">
+            <thead>
+              <tr>
+                <th>Column Name</th>
+                <th>Data Type</th>
+                <th>Constraint Type</th>
+                <th>Business Rule / Reference</th>
+              </tr>
+            </thead>
+            <tbody id="modalColumnsBody">
+              <!-- Populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="modal-subheading"><i class="fa-solid fa-code"></i> Oracle DDL Statement</h4>
+        <div class="code-block">
+          <div class="code-block-header">
+            <span>sql/01_ddl_schema.sql</span>
+            <button class="copy-btn" onclick="copyModalDDL()"><i class="fa-solid fa-copy"></i> Copy DDL</button>
+          </div>
+          <pre><code id="modalDDLCode">-- Loading DDL snippet...</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================================
+       EXPLAIN PLAN MODAL
+       ============================================================================ -->
+  <div class="modal-overlay" id="explainModal" onclick="closeExplainModal(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div class="modal-title-box">
+          <span class="badge-pill"><i class="fa-solid fa-microchip"></i> ORACLE CBO COST ESTIMATE</span>
+          <h3>Oracle SQL Execution Plan</h3>
+        </div>
+        <button class="modal-close-btn" onclick="closeExplainModalDirect()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="explain-summary-bar">
+          <div class="explain-kpi"><span>Optimizer:</span> <strong>ALL_ROWS</strong></div>
+          <div class="explain-kpi"><span>Estimated Cost:</span> <strong class="text-green" id="explainCost">3</strong></div>
+          <div class="explain-kpi"><span>Cardinality:</span> <strong class="text-cyan" id="explainCardinality">24</strong></div>
+          <div class="explain-kpi"><span>Bytes:</span> <strong>1,840</strong></div>
+        </div>
+        <div class="code-block">
+          <div class="code-block-header"><span>Oracle EXPLAIN PLAN FOR output</span></div>
+          <pre><code id="explainPlanText">Loading Execution Plan...</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>

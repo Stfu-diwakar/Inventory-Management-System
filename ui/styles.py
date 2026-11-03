@@ -23,13 +23,29 @@ def get_custom_css() -> str:
             background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 14px;
-            padding: 24px 28px;
+            padding: 20px 28px;
             margin-bottom: 24px;
             color: #FFFFFF;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .app-header-left {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex: 1 1 auto;
+            min-width: 280px;
+        }
+
+        .app-header-right {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
         }
 
         .app-title {
@@ -37,6 +53,7 @@ def get_custom_css() -> str:
             font-weight: 800;
             letter-spacing: -0.5px;
             margin: 0;
+            white-space: nowrap;
             background: linear-gradient(90deg, #60A5FA, #A78BFA, #38BDF8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -45,8 +62,33 @@ def get_custom_css() -> str:
         .app-subtitle {
             font-size: 13px;
             color: #94A3B8;
-            margin-top: 4px;
+            margin: 0;
             font-weight: 500;
+        }
+
+        .db-status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 8px 16px;
+            border-radius: 9999px;
+            backdrop-filter: blur(6px);
+        }
+
+        .db-status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .db-status-text {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+            white-space: nowrap;
         }
 
         /* Metric Cards */

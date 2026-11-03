@@ -1,0 +1,27 @@
+{
+  "name": "apexstock-portfolio",
+  "version": "1.0.0",
+  "description": "Enterprise Portfolio Website for ApexStock IMS DBMS Mini-Project (Oracle 23ai + Streamlit)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "portfolio",
+    "dbms",
+    "oracle-sql",
+    "streamlit",
+    "chandigarh-university",
+    "render-deploy"
+  ],
+  "author": "Diwakar Jha",
+  "license": "MIT",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.19.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

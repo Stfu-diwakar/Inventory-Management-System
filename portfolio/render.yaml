@@ -1,0 +1,51 @@
+# ============================================================================
+# RENDER.COM DEPLOYMENT BLUEPRINT SPECIFICATION
+# Project: ApexStock Enterprise Portfolio Website
+# Docs: https://render.com/docs/blueprint-spec
+# ============================================================================
+
+services:
+  # --------------------------------------------------------------------------
+  # OPTION 1: STATIC SITE (RECOMMENDED — FREE, INSTANT GLOBAL CDN, ZERO COLD STARTS)
+  # --------------------------------------------------------------------------
+  - type: web
+    name: apexstock-portfolio-static
+    env: static
+    plan: free
+    # When deployed from root of git repository containing portfolio subfolder:
+    # Set rootDir: portfolio
+    # If the repo root is already the portfolio folder, comment out rootDir.
+    rootDir: portfolio
+    buildCommand: "" # No build step required for pure high-speed static assets
+    staticPublishPath: .
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+
+  # --------------------------------------------------------------------------
+  # OPTION 2: NODE.JS WEB SERVICE (EXPRESS SERVER WITH GZIP & HEALTHCHECKS)
+  # --------------------------------------------------------------------------
+  - type: web
+    name: apexstock-portfolio-server
+    env: node
+    plan: free
+    rootDir: portfolio
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000

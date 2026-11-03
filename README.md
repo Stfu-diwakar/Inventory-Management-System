@@ -20,6 +20,7 @@
 6. [Streamlit UI Features & Design System](#-streamlit-ui-features--design-system)
 7. [Installation & Setup Instructions](#-installation--setup-instructions)
 8. [Step-by-Step Project Demonstration Guide (Viva Guide)](#-step-by-step-project-demonstration-guide-viva-guide)
+9. [Portfolio Website & Cloud Deployment (Render)](#-portfolio-website--cloud-deployment)
 
 ---
 
@@ -224,6 +225,15 @@ Mini-Pro/
 │       ├── dcl_security_view.py      # RBAC, GRANT/REVOKE & Audit Logs
 │       └── settings_view.py          # DB Diagnostics & 1-Click Re-seeder
 │
+├── portfolio/                        # 🌐 Render-Deploy-Ready Project Portfolio Website
+│   ├── index.html                    # Interactive showcase & simulated SQL workbench
+│   ├── css/style.css                 # Enterprise dark navy design system
+│   ├── js/main.js                    # Interactive query runner, ERD modals & animations
+│   ├── render.yaml                   # Render.com Blueprint deployment file
+│   ├── server.js                     # Node.js Express production server
+│   ├── server.py                     # Python HTTP server fallback
+│   └── DEPLOY.md                     # 2-minute cloud deployment instructions
+│
 ├── config.py                         # Application configuration
 ├── app.py                            # Main Streamlit application
 ├── requirements.txt                  # Python dependencies
@@ -418,3 +428,21 @@ When presenting this project to your faculty, examiner, or viva committee, follo
 - Show the **RBAC Privilege Matrix** explaining the Separation of Duties between Admin, Manager, Staff, and Auditor.
 - Open **🔍 Data Dictionary (USER_TAB_PRIVS_MADE)** to show real permissions stored in Oracle's data dictionary.
 - Open **⚡ Interactive GRANT / REVOKE Runner** to execute a live `GRANT` or `REVOKE` command and show the updated catalog.
+
+---
+
+## 🌐 Portfolio Website & Cloud Deployment
+
+An interactive showcase and presentation website is available in the [`portfolio/`](portfolio/) directory.
+
+### Quick Local Launch:
+```bash
+cd portfolio
+npm install && npm start
+# Or using Python:
+python server.py
+```
+Open 👉 `http://localhost:3000`
+
+### Cloud Deployment (Render.com):
+The portfolio is **Render Deploy Ready** out-of-the-box via `portfolio/render.yaml` or Render Static Sites. Refer to [`portfolio/DEPLOY.md`](portfolio/DEPLOY.md) for full instructions.
