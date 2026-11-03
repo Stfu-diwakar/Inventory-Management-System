@@ -15,7 +15,7 @@ Render's Static Site hosting gives you an instant global CDN, automatic SSL cert
 4. Connect your repository.
 5. In the configuration page, specify:
    - **Name:** `apexstock-portfolio` *(or your preferred name)*
-   - **Root Directory:** `portfolio` *(if your repo contains the root mini-pro folder)* or leave blank if deploying just this folder.
+   - **Root Directory:** *(leave blank for `DA-Portfolio`)*
    - **Build Command:** *(leave empty)*
    - **Publish Directory:** `.` *(current directory)*
 6. Click **Create Static Site**.
@@ -43,7 +43,7 @@ If you prefer running a dedicated Express web server with health monitoring:
 ### Steps:
 1. Click **New +** $\rightarrow$ **Web Service**.
 2. Connect your repo and set:
-   - **Root Directory:** `portfolio`
+   - **Root Directory:** *(leave blank for `DA-Portfolio`)*
    - **Environment:** `Node`
    - **Build Command:** `npm install`
    - **Start Command:** `npm start`

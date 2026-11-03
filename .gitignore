@@ -9,7 +9,8 @@ report/
 report/**
 
 # Images generated specifically for report
-cu.png
+/cu.png
+!portfolio/assets/cu.png
 
 # Python bytecode and caches
 __pycache__/

@@ -12,11 +12,7 @@ services:
     name: apexstock-portfolio-static
     env: static
     plan: free
-    # When deployed from root of git repository containing portfolio subfolder:
-    # Set rootDir: portfolio
-    # If the repo root is already the portfolio folder, comment out rootDir.
-    rootDir: portfolio
-    buildCommand: "" # No build step required for pure high-speed static assets
+    buildCommand: "" # Pure high-speed static assets
     staticPublishPath: .
     headers:
       - path: /*
@@ -40,7 +36,6 @@ services:
     name: apexstock-portfolio-server
     env: node
     plan: free
-    rootDir: portfolio
     buildCommand: npm install
     startCommand: npm start
     healthCheckPath: /healthz
